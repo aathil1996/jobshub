@@ -1,7 +1,7 @@
 <?php
 
 include('includes/dbconnection.php');
-
+include('includes/session.php');
 
 //Uploading to Database
 if (isset($_POST['submit'])){
@@ -17,17 +17,17 @@ if (isset($_POST['submit'])){
     $email = $_POST['email'];
     $website = $_POST['website'];
 
-    $insertProduct = "INSERT INTO vacancies ( JobID, Providername, Jobtitle, description, Sectortype, ClosingDate, Contact
+    $insertVacancy = "INSERT INTO vacancies ( JobID, Providername, Jobtitle, description, Sectortype, ClosingDate, Contact,
       email,website )
      VALUES ('$jobID','$providername', '$jobtitle','$description', '$sector', '$closing', '$Contact', '$email', '$website')";
 
-    if (mysqli_query($connection,$insertProduct) === TRUE) {
-                $message = base64_encode(urlencode("Product Added."));
+    if (mysqli_query($connection,$insertVacancy) === TRUE) {
+                $message = base64_encode(urlencode("Vacancy Added."));
 				header('Location:admin_vacancies_add.php?msg=' . $message);
 				exit();
         }
     else {
-        $message = base64_encode(urlencode("SQL Error while Registering"));
+        $message = base64_encode(urlencode("Error..!"));
         header('Location:admin_vacancies_add.php?msg=' . $message);
         exit();
         }

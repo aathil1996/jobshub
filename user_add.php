@@ -43,9 +43,9 @@
 
         </div>
     <div class="row-100">
-        <div class="login-box">
+
             <h2 class="error-msg"><?php include_once('includes/message.php'); ?></h2>
-               <form action="user_add_submit.php" method="post">
+               <form class="form-box" action="user_add_submit.php" method="post" enctype="multipart/form-data">
                     <p>Name</p>
                     <input type="text" name="name" placeholder="Enter User's name" required>
 
@@ -59,16 +59,17 @@
                     <input type="password" name="password2" placeholder="Enter User's Password" id="confirm_password" required>
 
                     <p>Select User Type</p>
-                    <select name="userType" class="m-b-20">
+                    <select name="usertype" class="m-b-20">
+                        <option value="0">Admin</option>
                         <option value="1">Seeker</option>
                         <option value="2">Provider</option>
-                        <option value="0">Admin</option>
+
                     </select>
 
                     <p>Contact number</p>
-                    <input type="number" name="contact" placeholder="+941234567">
-
-                    <input type="submit" name="submit" value="Add User" class="form-button" required>
+                    <input type="number" name="contact" placeholder="+941234567"  required>
+                    <br/><br/>
+                    <input type="submit" name="submit" value="Add User" class="form-button">
                 </form>
         </div>
     </div>

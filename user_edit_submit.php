@@ -1,9 +1,9 @@
 <?php
 
-include('../includes/connection.php');
+include('../includes/dbconnection.php');
 
 
-$id= $_POST['EditID'];
+$id= $_POST['userID'];
 $newName = $_POST['EditName'];
 $newEmail = $_POST['EditEmail'];
 $newPassword = sha1($_POST['EditPassword']);
@@ -28,7 +28,7 @@ $newContact = $_POST['EditContact'];
             }
 
             else {
-                $message = base64_encode(urlencode("SQL Error while Registering"));
+                $message = base64_encode(urlencode("Error...!"));
 				header('Location:user_edit.php?msg=' . $message);
 				exit();
             }

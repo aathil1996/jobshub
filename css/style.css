@@ -222,6 +222,12 @@ a{
 .font-white{
     color: #FFF;
 }
+.contents{
+    color: #FFF;
+    text-align: justify;
+    font-size: 14px;
+    text-decoration: bold;
+}
 
 .font-red{
    color: #F00;

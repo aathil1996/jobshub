@@ -45,7 +45,7 @@
             </div>
         </div>
 
-        <?php include('includes/footer.php') ?>
+
 
         <script>
         var check = function() {
@@ -62,5 +62,5 @@
         </script>
 
 </body>
-
+<?php include('includes/footer.php') ?>
 </html>

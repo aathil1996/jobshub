@@ -43,14 +43,6 @@
             </div>
         </a>
     </div>
-
-    <div class="row-100">
-        <a href="report.php">
-            <div class="dashboard-button">
-                    Reports
-            </div>
-        </a>
-    </div>
     <?php include('includes/footer.php') ?>
 
 </body>

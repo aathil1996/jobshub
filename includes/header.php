@@ -2,6 +2,7 @@
     <div class="row-100 bg-grey">
       <ul class="left-nav">
             <li><a class="home-active" href="index.php">Home</a></li>
+            <li><a class="products-active" href="vacancies.php">Vacancies</a></li>
             <li><a class="contact" href="contact_us.php">Contact Us</a></li>
             <li><a class="About" href="about_us.php">About Us</a></li>
       </ul>
@@ -25,7 +26,7 @@
                             echo "<br><p class=\"logged-in-msg\">You are Logged in as " . $_SESSION['name']. " </p>";
                 }
           elseif("{$_SESSION['usertype']}" == '2'){
-            echo "<li><a href=\"Provider_dashboard.php\" class=\"active\">Vendor Dashboard</a></li>";
+            echo "<li><a href=\"provider_dashboard.php\" class=\"active\">Job Provider Dashboard</a></li>";
             echo "<li><a href=\"logout.php\">Log Out</a></li>";
                             echo "<br><p class=\"logged-in-msg\">You are Logged in as " . $_SESSION['name']." </p>";
                 }

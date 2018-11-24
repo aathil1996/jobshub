@@ -1,10 +1,9 @@
-<?php include('includes/dbconnection.php') ?>
-<?php include('includes/session.php') ?>
+<?php include('includes/dbconnection.php');
+      include('includes/session.php');
 
-<?php
 	//Unauthorized Access Check
     checkSession();
-    if(!isset($_SESSION['usertype']) || $_SESSION['usertype'] != '0'){
+    if(!isset($_SESSION['usertype']) || $_SESSION['usertype'] != '2'){
        $message = base64_encode(urlencode("You don't have Authentication"));
        header('Location:login.php?msg=' . $message);
        exit();
@@ -31,22 +30,26 @@
     <div class="row-75 bg-grey">
         <div class="row-100 navigation">
             <ul class="right-nav bg-green">
-                   <li><a href="jobs_list.php" class="bg-green" >View Vacancies</a></li>
-                   <li><a href="admin_vacancies_add.php" class="bg-green" >Add Vacancies</a></li>
-                   <li><a href="admin_vacancies_delete.php" class="bg-green" >Delete Vacancies</a></li>
+                   <li><a href="provider_vacancies_view.php" class="bg-green" >View Vacancies</a></li>
+                   <li><a href="provider_vacancies_add.php" class="bg-green" >Add Vacancies</a></li>
+                   <li><a href="provider_vacancies_delete.php" class="bg-green" >Delete Vacancies</a></li>
              </ul>
         </div>
     </div>
-
+<div class="row-100">
     <?php
-        $retrieve = "SELECT * FROM vacancies";
 
-        $result = mysqli_query($connection,$retrieve);
+        $userID = $_SESSION["userID"];
+        $retrieve = "SELECT * FROM vacancies WHERE providerID='$userID'";
+
+        //Selecting all data from Table
+        $result = mysqli_query($connection,$retrieve);//Passing SQL
+        //print_r($result);
 
 
         echo "<table class=\"user\">
             	<tr>
-                <th>Vacancies ID</th>
+                <th>Vacanciy ID</th>
                 <th>Provider Name</th>
                 <th> Job Title </th>
                 <th>Description </th>
@@ -55,7 +58,7 @@
                 </tr>
             ";
 
-        while($row = mysqli_fetch_assoc($result)){
+      while($row = mysqli_fetch_assoc($result)){
           if($row['Sectortype']=='1'){
                   $type= "Government";
               }

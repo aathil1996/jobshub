@@ -4,7 +4,7 @@
 <?php
 	//Unauthorized Access Check
     checkSession();
-    if(!isset($_SESSION['usertype']) || $_SESSION['usertype'] != '0'){
+    if(!isset($_SESSION['usertype']) || $_SESSION['usertype'] != '2'){
        $message = base64_encode(urlencode("You don't have Authentication"));
        header('Location:login.php?msg=' . $message);
        exit();
@@ -31,10 +31,9 @@
     <div class="row-75 bg-grey">
         <div class="row-100 navigation">
             <ul class="right-nav bg-green">
-                 <li><a href="jobs_list.php" class="bg-green" >View Vacancies</a></li>
-                 <li><a href="admin_vacancies_add.php" class="bg-green" >Add Vacancies</a></li>
-                 <li><a href="admin_vacancies_edit.php" class="bg-green" >Edit Vacancies</a></li>
-                 <li><a href="admin_vacancies_delete.php" class="bg-green" >Delete Vacancies</a></li>
+                <li><a href="provider_vacancies_view.php" class="bg-green" >View Vacancies</a></li>
+                <li><a href="provider_vacancies_add.php" class="bg-green" >Add Vacancies</a></li>
+                <li><a href="provider_vacancies_delete.php" class="bg-green" >Delete Vacancies</a></li>
            </ul>
         </div>
     </div>
@@ -45,10 +44,10 @@
 
     <?php
 
-        $retrieve = "SELECT * FROM vacancies";
+    $userID = $_SESSION["userID"];
+    $retrieve = "SELECT * FROM vacancies WHERE providerID='$userID' ";
 
-        $result = mysqli_query($connection,$retrieve);
-
+    $result = mysqli_query($connection,$retrieve);
 
         echo "<table class=\"user\">
             	<tr>

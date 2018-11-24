@@ -63,14 +63,14 @@
                 <input type="number" name="Contact" placeholder="+941234567">
 
                 <p>Enter Your E-mail:</p>
-                <input type="text" name="email" placeholder="jobshub@jobshub.com">
+                <input type="email" name="email" placeholder="jobshub@jobshub.com">
 
                 <p>Enter Your Website:</p>
-                <input type="text" name="	website" placeholder="www.jobshub.lk">
+                <input type="url" name="website" placeholder="www.jobshub.lk">
 
                 <br><br>
 
-                <input class="form-button" type="submit" name="submit" value="Add Product">
+                <input class="form-button" type="submit" name="submit" value="Add Vacancy">
 
                 <h3 class="error-msg"><?php include_once('includes/message.php'); ?></h3>
 

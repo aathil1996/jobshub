@@ -1,15 +1,17 @@
 <?php
 
-include('../includes/connection.php');
+include('includes/dbconnection.php');
+include('includes/session.php');
 
 if(isset($_POST['submit'])){
 
     // Assign input data from form to variables
+	$userID = $_POST['userID'];
 	$name = $_POST['name'];
 	$email = $_POST['email'];
   $password = sha1($_POST['password']);
 	$password2 = sha1($_POST['password2']);
-  $userType = $_POST['userType'];
+  $userType = $_POST['usertype'];
   $contact = $_POST['contact'];
 
     //Check if passwords match
@@ -32,8 +34,8 @@ if(isset($_POST['submit'])){
 
         //Insert to Database
         else {
-            $registrationQuery = "INSERT INTO users (name, email, password, usertype, contact)
-						 VALUES ('$name', '$email', '$password', '$userType', '$contact')";
+            $registrationQuery = "INSERT INTO users (userID, name, email, password, usertype, contact)
+						 VALUES ('$userID', '$name', '$email', '$password', '$usertype', '$contact')";
 
             if (mysqli_query($connection,$registrationQuery) === TRUE) {
                 $message = base64_encode(urlencode("Registration Successful"));

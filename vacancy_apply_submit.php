@@ -1,6 +1,6 @@
 <?php
 
-include('includes/connection.php');
+include('includes/dbconnection.php');
 include('includes/session.php');
 
     $customerID=$_POST['customerID'];
@@ -28,6 +28,6 @@ include('includes/session.php');
 
 
 mysqli_close($connection);
-    
-    
+
+
 ?>

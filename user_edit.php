@@ -86,9 +86,10 @@
 
                                 <p>Select User Type</p>
                                 <select name=\"EditType\" class=\"m-b-20\">
-                                    <option value=\"c\">Customer</option>
-                                    <option value=\"v\">Vendor</option>
-                                    <option value=\"a\">Admin</option>
+                                    <option value=\"0\">Admin</option>
+                                    <option value=\"1\">Seeker</option>
+                                    <option value=\"2\">Provider</option>
+
                                 </select>
 
                                 <p>Contact number</p>

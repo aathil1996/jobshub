@@ -40,58 +40,58 @@
 
     <div class="row-25">
     </div>
-    <div class="row-50">
 
-        <form method="post">
-            <p>Search by Name</p>
-            <input type="text" name="searchName" placeholder="Enter name">
-            <input type="submit" name="submit" value="Search by name" class="form-button">
-        </form>
-
-    </div>
     <div class="row25">
     </div>
-
     <?php
 
-    if(isset($_POST['submit'])){
+        $retrieve = "SELECT * FROM users";
 
-        $name = $_POST['searchName'];
+        $result = mysqli_query($connection,$retrieve);
 
-        $selectusers = "SELECT * FROM users WHERE  name ='$name' ";
+        echo "<table class=\"user\">
+            	<tr>
+              <th>User ID</th>
+              <th>User Name</th>
+              <th>Email </th>
+              <th>User Type </th>
+              <th>Contact Details</th>
+              <th>Delete</th>
+              </tr>
+            ";
+              echo "<div class=\"row-100\">";
+        while($row = mysqli_fetch_assoc($result)){
+          if($row['usertype']=='0'){
+                  $type= "Admin";
+              }
+              elseif($row['usertype']=='1'){
+                  $type="Seeker";
+              }
+              else{
+                  $type="Provider";
+              }
 
-        $userquery = mysqli_query($connection,$selectusers);
-
-        echo "<table border=1 class=\"user\">
-            <tr>
-                <th>User Id</th>
-                <th>User type</th>
-                <th>User name</th>
-                <th>Email</th>
-                <th>Delete records</th>
-
-            </tr>";
-        if (mysqli_num_rows($userquery) > 0){
-            while($row = mysqli_fetch_assoc($userquery)){
-                echo "<tr>
-                        <td>".$row['userID']."</td>
-                        <td>".$row['usertype']."</td>
-                        <td>".$row['name']."</td>
-                        <td>".$row['email']."</td>
-                        <td>
-                            <form action =\"user_delete_submit.php\" name=\"del_submit\" method=\"post\" >
-                                <input type=\"hidden\" value=" .$row['userID']. " name=\"jobid\">
-                                <input class=\"form-button\" type=\"submit\" name=\"submit\" value=\"Delete\">
-                            </form>
-                        </td>
-                    </tr>";
-
-            }
+            echo "<tr>
+                <td>".$row['userID']."</td>
+                <td>".$row['name']."</td>
+                <td>".$row['email']."</td>
+                <td>".$type."</td>
+                <td>".$row['contact']."</td>
+                <td>
+                      <form action =\"user_delete_submit.php\" name=\"del_submit\" method=\"post\" >
+                          <input type=\"hidden\" value=" .$row['userID']. " name=\"userID\">
+                          <input class=\"form-button\" type=\"submit\" name=\"submit\" value=\"Delete\">
+                      </form>
+                </td>
+            </tr>
+            ";
         }
-      }
+
+        echo "</table>";
 
 
 ?>
+
 
 
 </body>
